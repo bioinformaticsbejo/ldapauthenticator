@@ -281,7 +281,7 @@ class LDAPAuthenticator(Authenticator):
                 server,
                 user=self.escape_userdn_if_needed(userdn),
                 password=password,
-                auto_bind=ldap3.AUTO_BIND_TLS_BEFORE_BIND,
+                auto_bind=ldap3.AUTO_BIND_TLS_BEFORE_BIND if self.use_ssl else True,
             )
             return conn
         
